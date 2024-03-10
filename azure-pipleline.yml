@@ -1,1 +1,19 @@
+trigger:
+- main
 
+steps:
+# Prepare Analysis Configuration task
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: $(SERVICEENDPOINT)
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: $(PROJECTKEY)
+
+# Run Code Analysis task
+- task: SonarQubeAnalyze@5
+
+# Publish Quality Gate Result task
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
