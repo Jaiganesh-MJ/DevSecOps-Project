@@ -5,7 +5,7 @@ steps:
 # Prepare Analysis Configuration task
 - task: SonarQubePrepare@5
   inputs:
-    SonarQube: $(SERVICEENDPOINT)
+    SonarQube: 'http://52.172.211.26:9000/'
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: $(PROJECTKEY)
